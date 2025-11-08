@@ -1,0 +1,2 @@
+public class patten2 {
+}
