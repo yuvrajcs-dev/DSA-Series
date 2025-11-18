@@ -1,0 +1,18 @@
+class Solution {
+    public boolean isOneBitCharacter(int[] bits) {
+        int i = 0;
+        int n = bits.length;
+
+        // Go through the array until the second last element
+        while (i < n - 1) {
+            if (bits[i] == 1) {
+                i += 2;   // 2-bit character (10 or 11)
+            } else {
+                i += 1;   // 1-bit character (0)
+            }
+        }
+
+        // If we stop exactly at last index (n-1), last character is 1-bit
+        return i == n - 1;
+    }
+}
