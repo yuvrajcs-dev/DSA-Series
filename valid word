@@ -1,0 +1,33 @@
+class Solution {
+    public boolean isValid(String word) {
+
+        // Rule 1: Minimum length 3
+        if (word.length() < 3) return false;
+
+        boolean hasVowel = false;
+        boolean hasConsonant = false;
+
+        for (char ch : word.toCharArray()) {
+
+            // Rule 2: only digits and letters
+            if (!Character.isLetterOrDigit(ch)) {
+                return false;
+            }
+
+            if (Character.isLetter(ch)) {
+                char lower = Character.toLowerCase(ch);
+
+                // Rule 3: check vowel
+                if ("aeiou".indexOf(lower) != -1) {
+                    hasVowel = true;
+                } 
+                // Rule 4: check consonant
+                else {
+                    hasConsonant = true;
+                }
+            }
+        }
+
+        return hasVowel && hasConsonant;
+    }
+}
