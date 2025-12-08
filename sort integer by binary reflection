@@ -1,0 +1,41 @@
+class Solution {
+    public int[] sortByReflection(int[] nums) {
+        int n = nums.length;
+        int[] reflected = new int[n];
+
+        
+        for (int i = 0; i < n; i++) {
+            reflected[i] = reflect(nums[i]);
+        }
+
+        
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                
+                if (reflected[j] < reflected[i] ||
+                    (reflected[j] == reflected[i] && nums[j] < nums[i])) {
+
+                    
+                    int temp = nums[i];
+                    nums[i] = nums[j];
+                    nums[j] = temp;
+
+                    
+                    int temp2 = reflected[i];
+                    reflected[i] = reflected[j];
+                    reflected[j] = temp2;
+                }
+            }
+        }
+
+        return nums;
+    }
+
+    
+    private int reflect(int x) {
+        String bin = Integer.toBinaryString(x); 
+        String rev = new StringBuilder(bin).reverse().toString();
+        return Integer.parseInt(rev, 2);
+    }
+    
+}
